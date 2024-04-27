@@ -1,0 +1,19 @@
+version: "3.2"
+
+services:
+  cicd-pipe:
+    container_name: cicd-container
+    image: cicd-image
+    build:
+      context: .
+      target: developer
+    ports:
+      - 8080:80
+    environment:
+      PORT: 80
+    networks:
+      - cicd-network
+    command: npm run dev
+networks:
+  cicd-network:
+    driver: bridge

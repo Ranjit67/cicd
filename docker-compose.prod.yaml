@@ -1,0 +1,18 @@
+version: "3.2"
+
+services:
+  cicd-pipe:
+    container_name: cicd-container-dev
+    image: cicd-image-dev
+    build:
+      context: .
+      target: production
+    ports:
+      - 8080:80
+    environment:
+      PORT: 80
+    networks:
+      - cicd-network
+networks:
+  cicd-network:
+    driver: bridge
