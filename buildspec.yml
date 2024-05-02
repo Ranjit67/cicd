@@ -1,0 +1,28 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14  # Adjust Node.js version as needed
+    commands:
+      - npm install -g typescript  # Install TypeScript globally (optional)
+      - cd cicd  # Change directory to your TypeScript source code
+      - npm install  # Install project dependencies
+
+  build:
+    commands:
+      - echo "Build started on: $(date)"
+      - tsc  # Run tsc to compile TypeScript code
+      - echo "Build completed on: $(date)"
+
+  post_build:
+    commands:
+      - cd ..  # Move back to the project root directory
+      - echo "Copy artifacts..."
+      - cp -r src/dist/* .  # Copy compiled JavaScript files (adjust path if needed)
+
+artifacts:
+  # Include compiled JavaScript files and potentially other build artifacts
+  files:
+    - '**/*.js'  # Include all JavaScript files
+    - 'package*.json'  # Include package.json and other relevant files (optional)
