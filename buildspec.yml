@@ -19,7 +19,7 @@ phases:
     commands:
       - cd ..  # Move back to the project root directory
       - echo "Copy artifacts..."
-      - cp -r src/dist/* .  # Copy compiled JavaScript files (adjust path if needed)
+      - cp -r cicd/build/* .  # Copy compiled JavaScript files (adjust path if needed)
 
 artifacts:
   # Include compiled JavaScript files and potentially other build artifacts
