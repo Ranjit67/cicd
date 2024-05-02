@@ -13,11 +13,14 @@ phases:
     commands:
       - npm install
       - npm run build   # Run TypeScript compiler to build the project
-
   post_build:
     commands:
-      - echo done   # Run tests or any additional post-build steps
-  
+      - cd ..  # Move back to the project root directory
+      - echo "Copy artifacts..."
+      - cp -r ./build/* .  # Copy compiled JavaScript files (adjust path if needed)
+
 artifacts:
-    files:
-      - "**/*"
+  # Include compiled JavaScript files and potentially other build artifacts
+  files:
+    - '**/*.js'  # Include all JavaScript files
+    - 'package*.json'  # Include package.json and other relevant files (optional)
