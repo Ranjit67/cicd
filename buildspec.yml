@@ -6,13 +6,11 @@ phases:
       nodejs: 14  # Adjust Node.js version as needed
     commands:
       - npm install -g typescript  # Install TypeScript globally (optional)
-      - cd cicd  # Change directory to your TypeScript source code
       - npm install  # Install project dependencies
 
   build:
     commands:
       - echo "Build started on: $(date)"
-      - cd cicd
       - tsc  # Run tsc to compile TypeScript code
       - echo "Build completed on: $(date)"
 
