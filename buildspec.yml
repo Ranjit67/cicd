@@ -3,25 +3,21 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 14  # Adjust Node.js version as needed
+      nodejs: 18  # Adjust the Node.js version as needed
+
+  pre_build:
     commands:
-      - npm install -g typescript  # Install TypeScript globally (optional)
-      - npm install  # Install project dependencies
+      - npm install -g typescript
 
   build:
     commands:
-      - echo "Build started on: $(date)"
-      - tsc  # Run tsc to compile TypeScript code
-      - echo "Build completed on: $(date)"
+      - npm install
+      - npm run build   # Run TypeScript compiler to build the project
 
   post_build:
     commands:
-      - cd ..  # Move back to the project root directory
-      - echo "Copy artifacts..."
-      - cp -r cicd/build/* .  # Copy compiled JavaScript files (adjust path if needed)
-
+      - echo done   # Run tests or any additional post-build steps
+  
 artifacts:
-  # Include compiled JavaScript files and potentially other build artifacts
-  files:
-    - '**/*.js'  # Include all JavaScript files
-    - 'package*.json'  # Include package.json and other relevant files (optional)
+    files:
+      - "**/*"
