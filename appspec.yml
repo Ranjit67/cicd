@@ -1,23 +1,27 @@
 version: 0.0
 os: linux
 files:
-  - source: /cicd-Build
+  - source: /
     destination: /home/ubuntu/app
 permissions:
-  - object: /home/ubuntu/app
-    owner: root
-    group: root
-    mode: 755
+  - object: /home/ubuntu/app/logs
+    owner: ubuntu
+    group: ubuntu
+    mode: 775  # Allow write access for logs
+  - object: /home/ubuntu/app  # Restrict access to app directory itself
+    owner: ubuntu
+    group: ubuntu
+    mode: 750  # Read/execute for owner and group
 hooks:
   BeforeInstall:
     - location: scripts/beforeInstall.sh
       timeout: 300
-      runas: root
+      runas: ubuntu  # Consider a non-root user if possible
   AfterInstall:
     - location: scripts/afterInstall.sh
       timeout: 300
-      runas: root
+      runas: ubuntu  # Consider a non-root user if possible
   ApplicationStart:
     - location: scripts/applicationStart.sh
       timeout: 300
-      runas: root
+      runas: ubuntu  # Consider a non-root user if possible
