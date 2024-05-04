@@ -2,9 +2,9 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /var/www/myapp
+    destination: /home/ubuntu/app
 permissions:
-  - object: /var/www/myapp
+  - object: /home/ubuntu/app
     owner: root
     group: root
     mode: 755
