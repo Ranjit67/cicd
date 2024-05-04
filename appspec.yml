@@ -1,0 +1,23 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/myapp
+permissions:
+  - object: /var/www/myapp
+    owner: root
+    group: root
+    mode: 755
+hooks:
+  BeforeInstall:
+    - location: scripts/beforeInstall.sh
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: scripts/afterInstall.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: scripts/applicationStart.sh
+      timeout: 300
+      runas: root
