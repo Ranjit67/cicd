@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Start new processes
-cd /var/www/myapp
+cd /home/ubuntu/app/
 # pm2 start ./build/server.js --name "server"
 echo "Starting"
 

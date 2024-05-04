@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Change to your application directory
-cd /var/www/myapp
+cd /home/ubuntu/app/
 
 # Install dependencies (if needed)
 npm install
