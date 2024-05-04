@@ -2,15 +2,18 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/app
+    destination: /var/www/myapp
 permissions:
-  - object: /home/ubuntu/app
+  - object: /var/www/myapp
     owner: root
     group: root
     mode: 755
 hooks:
   BeforeInstall:
     - location: scripts/beforeInstall.sh
+      timeout: 300
+      runas: root
+    - location: scripts/downloadBundle.sh
       timeout: 300
       runas: root
   AfterInstall:
