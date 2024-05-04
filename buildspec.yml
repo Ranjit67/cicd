@@ -16,6 +16,7 @@ phases:
   post_build:
     commands:
       - echo "Copy artifacts..."
+      - 
 artifacts:
   # Include compiled JavaScript files and potentially other build artifacts
   files:
